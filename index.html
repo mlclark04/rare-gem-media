@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rare Gem Media — Creative Agency</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSI+CiAgPHBvbHlnb24gcG9pbnRzPSIyMCwyIDM2LDE0IDM2LDI2IDIwLDM4IDQsMjYgNCwxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOUIxRjMwIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8cG9seWdvbiBwb2ludHM9IjIwLDIgMzYsMTQgMjAsMTYiIGZpbGw9InJnYmEoMjksMTAyLDcxLDAuNikiLz4KICA8cG9seWdvbiBwb2ludHM9IjIwLDIgNCwxNCAyMCwxNiIgIGZpbGw9InJnYmEoMTQsNTEsMzQsMC40NSkiLz4KICA8cG9seWdvbiBwb2ludHM9IjQsMTQgMzYsMTQgMjAsMTYiIGZpbGw9InJnYmEoMjQyLDIzOSwyMzMsMC41KSIvPgogIDxwb2x5Z29uIHBvaW50cz0iNCwxNCAyMCwxNiAyMCwzOCIgZmlsbD0icmdiYSgxNCw1MSwzNCwwLjY1KSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzYsMTQgMjAsMTYgMjAsMzggMzYsMjYiIGZpbGw9InJnYmEoMjksMTAyLDcxLDAuNDUpIi8+Cjwvc3ZnPg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Josefin+Sans:wght@200;300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest:       #0E3322;
+    --emerald:     #1D6647;
+    --ruby:         #9B1F30;
+    --ruby-light:   #C23445;
+    --pearl:        #FDFCFA;
+    --pearl-warm:   #F2EFE9;
+    --pearl-deep:   #E8E3DB;
+    --pearl-darker: #D9D2C8;
+    --text-dark:    #1A1A18;
+    --text-mid:     #4A4A46;
+    --text-light:   #8A8A84;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--pearl);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 72px;
+    height: 68px;
+    background: rgba(253,252,250,0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(26,26,24,0.07);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 32px rgba(26,26,24,0.07); }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px; text-decoration: none;
+  }
+  .nav-gem { width: 26px; height: 26px; transition: transform 0.5s ease; }
+  .nav-logo:hover .nav-gem { transform: rotate(60deg); }
+  .nav-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 400;
+    letter-spacing: 0.22em; color: var(--text-dark); text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 44px; list-style: none; }
+  .nav-links a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-light); text-decoration: none; transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 1px; background: var(--emerald);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--text-dark); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--pearl); background: var(--ruby); border: none;
+    padding: 11px 26px; cursor: pointer; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--ruby-light); transform: translateY(-1px); }
+  /* ── MOBILE NAV ── */
+  .nav-hamburger {
+    display: none; font-size: 24px; color: var(--text-dark);
+    background: none; border: none; cursor: pointer;
+  }
+  .nav-links.mobile-open { display: flex; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-wordmark { font-size: 13px; }
+    .nav-hamburger { display: block; }
+    .nav-links {
+      position: absolute; top: 68px; left: 0; right: 0;
+      flex-direction: column; gap: 0; list-style: none;
+      background: rgba(253,252,250,0.98); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(26,26,24,0.07);
+      padding: 20px 0; display: none;
+    }
+    .nav-links.mobile-open { display: flex !important; }
+    .nav-links li { padding: 12px 24px; border-bottom: 1px solid rgba(26,26,24,0.05); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links a { font-size: 12px; }
+    .nav-cta { padding: 10px 20px; font-size: 9px; }
+  }
+
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding-top: 68px;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .hero-left {
+    padding: 100px 72px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    background: var(--pearl); position: relative;
+  }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 36px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--emerald); flex-shrink: 0;
+  }
+  .hero-eyebrow-text {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-light);
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 82px; font-weight: 300; line-height: 0.98;
+    color: var(--text-dark); margin-bottom: 36px;
+    animation: fadeUp 0.8s ease 0.2s both; letter-spacing: -0.01em;
+  }
+  .hero-headline em { font-style: italic; color: var(--emerald); }
+  .hero-headline .ul-word {
+    position: relative; display: inline-block;
+  }
+  .hero-headline .ul-word::after {
+    content: ''; position: absolute; bottom: 6px; left: 0; right: 0;
+    height: 2px; background: var(--emerald);
+    transform-origin: left; animation: drawLine 0.7s ease 1.1s both;
+  }
+  .hero-body {
+    font-size: 15px; font-weight: 300; line-height: 1.85;
+    color: var(--text-mid); max-width: 400px; margin-bottom: 52px;
+    animation: fadeUp 0.8s ease 0.35s both;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 24px;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+  .btn-primary {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pearl); background: var(--ruby); border: none;
+    padding: 16px 38px; cursor: pointer; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--ruby-light); transform: translateY(-1px); }
+  .btn-text {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-light); background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+  }
+  .btn-text::after { content: '→'; font-size: 13px; transition: transform 0.2s; }
+  .btn-text:hover { color: var(--text-dark); }
+  .btn-text:hover::after { transform: translateX(4px); }
+
+  /* Hero right */
+  .hero-right {
+    background: var(--pearl-warm); position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 64px 64px 80px; animation: fadeIn 1s ease 0.3s both;
+  }
+  .hero-gem-large {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -58%); width: 280px; height: 280px; opacity: 0.07;
+  }
+  .hero-right-content { position: relative; z-index: 1; }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-style: italic; font-weight: 300;
+    color: var(--text-dark); line-height: 1.5; max-width: 340px;
+    margin-bottom: 48px; padding-left: 20px; border-left: 2px solid var(--emerald);
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--pearl-deep);
+  }
+  .hero-stat {
+    background: var(--pearl-warm); padding: 22px 24px; transition: background 0.2s;
+  }
+  .hero-stat:hover { background: var(--pearl-deep); }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: var(--text-dark);
+    line-height: 1; display: block; margin-bottom: 4px;
+  }
+  .hero-stat-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light);
+  }
+
+  /* ── TICKER ── */
+  .ticker { background: var(--text-dark); padding: 18px 0; overflow: hidden; }
+  .ticker-track {
+    display: flex; animation: ticker 28s linear infinite; width: max-content;
+  }
+  .ticker-item {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(253,252,250,0.4); white-space: nowrap;
+    padding: 0 36px; display: flex; align-items: center; gap: 36px;
+  }
+  .ticker-item::after { content: '◆'; font-size: 6px; color: var(--ruby); opacity: 0.7; }
+
+  /* ── SERVICES ── */
+  .services { padding: 120px 72px; background: var(--pearl); }
+  .services-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: end; margin-bottom: 72px;
+  }
+  .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--emerald); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 1px; background: var(--emerald); flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300; color: var(--text-dark); line-height: 1.05;
+  }
+  .section-title em { font-style: italic; color: var(--ruby); }
+  .services-header-body {
+    font-size: 14px; font-weight: 300; line-height: 1.85;
+    color: var(--text-mid); margin-bottom: 24px;
+  }
+  .link-arrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-light); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;
+  }
+  .link-arrow::after { content: '→'; font-size: 12px; transition: transform 0.2s; }
+  .link-arrow:hover { color: var(--ruby); }
+  .link-arrow:hover::after { transform: translateX(4px); }
+
+  .services-grid-top {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px;
+  }
+  .services-grid-bottom {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; max-width: 66.666%;
+  }
+  .service-card {
+    background: var(--pearl-warm); padding: 44px 36px; position: relative;
+    overflow: hidden; transition: background 0.25s; cursor: default;
+  }
+  .service-card:hover { background: var(--pearl-deep); }
+  .service-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--ruby); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; font-style: italic; color: var(--ruby); opacity: 0.6;
+    position: absolute; top: 24px; right: 28px;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 14px;
+  }
+  .service-desc {
+    font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--text-mid); margin-bottom: 20px;
+  }
+  .service-tags { display: flex; flex-direction: column; gap: 6px; }
+  .service-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-light); display: flex; align-items: center; gap: 6px;
+  }
+  .service-tag::before { content: '—'; color: var(--ruby); font-size: 8px; }
+  .service-pricing-cta {
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(26,26,24,0.08);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ruby); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;
+  }
+  .service-pricing-cta::after { content: '→'; }
+  .service-pricing-cta:hover { color: var(--ruby-light); }
+
+  /* ── ABOUT ── */
+  .about-strip {
+    background: var(--pearl-warm); padding: 120px 72px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+  }
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300; color: var(--text-dark); line-height: 1.05; margin-bottom: 28px;
+  }
+  .about-title em { font-style: italic; color: var(--ruby); }
+  .about-body {
+    font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--text-mid); margin-bottom: 36px;
+  }
+  .about-right { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .value-card {
+    background: var(--pearl); padding: 32px 28px; position: relative;
+    overflow: hidden; transition: background 0.25s;
+  }
+  .value-card:hover { background: var(--pearl-deep); }
+  .value-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--emerald); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .value-card:hover::after { transform: scaleX(1); }
+  .value-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--text-dark); margin-bottom: 10px;
+  }
+  .value-desc { font-size: 12px; font-weight: 300; line-height: 1.7; color: var(--text-mid); }
+
+  /* ── PORTFOLIO ── */
+  .portfolio { padding: 120px 72px; background: var(--pearl); }
+  .portfolio-header {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px;
+  }
+  .portfolio-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-rows: 280px 280px; gap: 2px;
+  }
+  .portfolio-item {
+    position: relative; overflow: hidden; cursor: pointer; background: var(--pearl-warm);
+  }
+  .portfolio-item:first-child { grid-row: span 2; }
+  .portfolio-bg {
+    position: absolute; inset: 0; transition: transform 0.6s ease;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .portfolio-item:hover .portfolio-bg { transform: scale(1.04); }
+  .pb-1 { background: linear-gradient(145deg, #0E3322 0%, #1D6647 100%); }
+  .pb-2 { background: linear-gradient(145deg, #1A1A18 0%, #0E3322 100%); }
+  .pb-3 { background: linear-gradient(145deg, #2A8058 0%, #0E3322 100%); }
+  .pb-4 { background: linear-gradient(145deg, #0E3322 0%, #2A1A1C 100%); }
+  .portfolio-gem-mark { opacity: 0.08; width: 40%; max-width: 160px; }
+  .portfolio-overlay {
+    position: absolute; inset: 0; background: rgba(14,51,34,0.88);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 32px; opacity: 0; transition: opacity 0.35s ease;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ruby-light); margin-bottom: 8px;
+  }
+  .portfolio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; font-weight: 300; color: var(--pearl); margin-bottom: 16px;
+  }
+  .portfolio-cta {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(253,252,250,0.45); display: flex; align-items: center; gap: 6px;
+  }
+  .portfolio-cta::after { content: '→'; font-size: 10px; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--pearl-warm); padding: 120px 72px; }
+  .testimonials-header {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px;
+  }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .testimonial-card { background: var(--pearl); padding: 40px 36px; position: relative; }
+  .testimonial-coming {
+    position: absolute; top: 16px; right: 16px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); opacity: 0.4;
+  }
+  .testimonial-quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; line-height: 0.7; color: var(--pearl-deep); font-style: italic; margin-bottom: 20px;
+  }
+  .testimonial-lines { display: flex; flex-direction: column; gap: 8px; }
+  .testimonial-line {
+    height: 10px; background: var(--pearl-warm); border-radius: 2px;
+  }
+  .testimonial-line.s { width: 60%; }
+  .testimonial-line.m { width: 82%; }
+  .testimonial-line.l { width: 100%; }
+  .testimonial-attribution {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--pearl-deep);
+  }
+  .testimonial-avatar {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--pearl-deep); flex-shrink: 0;
+  }
+  .t-name-lines { display: flex; flex-direction: column; gap: 6px; }
+  .t-name-line {
+    height: 8px; background: var(--pearl-warm); border-radius: 2px;
+  }
+  .t-name-line:first-child { width: 100px; }
+  .t-name-line:last-child { width: 68px; }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 120px 72px; background: var(--text-dark);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(253,252,250,0.04);
+  }
+  .cta-section::after {
+    content: ''; position: absolute; bottom: -100px; left: 30%;
+    width: 400px; height: 400px; border-radius: 50%; border: 1px solid rgba(155,31,48,0.1);
+  }
+  .cta-left { position: relative; z-index: 1; }
+  .cta-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--emerald); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cta-label::before { content: ''; width: 20px; height: 1px; background: var(--emerald); }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px; font-weight: 300; font-style: italic; color: var(--pearl); line-height: 1.05;
+  }
+  .cta-right { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 28px; }
+  .cta-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: rgba(253,252,250,0.88); }
+  .cta-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-pearl {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dark); background: var(--pearl); border: none;
+    padding: 16px 36px; cursor: pointer; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-pearl:hover { background: var(--pearl-warm); transform: translateY(-1px); }
+  .btn-ghost-dark {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(253,252,250,0.75); background: none; border: 1px solid rgba(253,252,250,0.35);
+    padding: 15px 28px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost-dark:hover { border-color: rgba(253,252,250,0.7); color: var(--pearl); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark); border-top: 1px solid rgba(253,252,250,0.05);
+    padding: 40px 72px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .footer-gem { width: 20px; height: 20px; opacity: 0.4; }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 400; letter-spacing: 0.22em;
+    text-transform: uppercase; color: rgba(253,252,250,0.32);
+  }
+  .footer-links { display: flex; gap: 32px; list-style: none; }
+  .footer-links a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(253,252,250,0.22); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(253,252,250,0.6); }
+  .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+  .footer-probono {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(155,31,48,0.5); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-probono:hover { color: var(--ruby-light); }
+  .footer-copy { font-size: 11px; font-weight: 300; color: rgba(253,252,250,0.16); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <svg class="nav-gem" viewBox="0 0 40 40" fill="none">
+      <polygon points="20,2 36,14 36,26 20,38 4,26 4,14" fill="none" stroke="#9B1F30" stroke-width="1"/>
+      <polygon points="20,2 36,14 20,16" fill="rgba(29,102,71,0.4)"/>
+      <polygon points="20,2 4,14 20,16"  fill="rgba(14,51,34,0.3)"/>
+      <polygon points="4,14 36,14 20,16" fill="rgba(26,26,24,0.12)"/>
+      <polygon points="4,14 20,16 20,38" fill="rgba(14,51,34,0.5)"/>
+      <polygon points="36,14 20,16 20,38 36,26" fill="rgba(29,102,71,0.3)"/>
+    </svg>
+    <span class="nav-wordmark">Rare Gem Media</span>
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Start a Project</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      <span class="hero-eyebrow-text">Creative Agency · Little Rock, AR</span>
+    </div>
+    <h1 class="hero-headline">
+      Design<br>that makes<br>you <em><span class="ul-word">unforgettable.</span></em>
+    </h1>
+    <p class="hero-body">Rare Gem Media creates polished brand identities, high-performing websites, and strategic digital presences for businesses that refuse to blend in.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">View Services</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg class="hero-gem-large" viewBox="0 0 200 200" fill="none">
+      <polygon points="100,5 195,70 195,130 100,195 5,130 5,70" fill="none" stroke="#1A1A18" stroke-width="0.5"/>
+      <polygon points="100,5 195,70 100,90"  fill="rgba(26,26,24,0.1)"/>
+      <polygon points="100,5 5,70 100,90"    fill="rgba(26,26,24,0.05)"/>
+      <polygon points="5,70 195,70 100,90"   fill="rgba(26,26,24,0.18)"/>
+      <polygon points="5,70 100,90 100,195"  fill="rgba(26,26,24,0.07)"/>
+      <polygon points="195,70 100,90 100,195 195,130" fill="rgba(26,26,24,0.12)"/>
+    </svg>
+    <div class="hero-right-content">
+      <p class="hero-quote">"Every brand has a gem inside. We help you show it."</p>
+      <div class="hero-stats">
+        <div class="hero-stat" style="grid-column: span 2;">
+          <span class="hero-stat-num">Little Rock, AR</span>
+          <span class="hero-stat-label">Based & Proud of It</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Website Design & Development</span>
+    <span class="ticker-item">Brand Guidelines & Identity</span>
+    <span class="ticker-item">Search Engine Optimization</span>
+    <span class="ticker-item">Social Media Strategy</span>
+    <span class="ticker-item">Google Business</span>
+    <span class="ticker-item">Website Design & Development</span>
+    <span class="ticker-item">Brand Guidelines & Identity</span>
+    <span class="ticker-item">Search Engine Optimization</span>
+    <span class="ticker-item">Social Media Strategy</span>
+    <span class="ticker-item">Google Business</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Services built for brands<br>that mean <em>business.</em></h2>
+    </div>
+    <div>
+      <p class="services-header-body">Every service is strategy-led, custom-built, and designed to move the needle — not just look good.</p>
+      <a href="pricing.html" class="link-arrow">View Pricing</a>
+    </div>
+  </div>
+  <div class="services-grid-top">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <h3 class="service-name">Website Design & Development</h3>
+      <p class="service-desc">Custom-built websites that convert visitors into clients. Designed with your goals in mind, coded to perform — no templates, no shortcuts.</p>
+      <div class="service-tags">
+        <span class="service-tag">Custom Design</span>
+        <span class="service-tag">Development</span>
+        <span class="service-tag">CMS Integration</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <h3 class="service-name">Brand Guidelines & Identity</h3>
+      <p class="service-desc">A complete visual identity system — logo, color palette, typography, and usage rules that keeps your brand consistent across every touchpoint.</p>
+      <div class="service-tags">
+        <span class="service-tag">Logo Design</span>
+        <span class="service-tag">Color & Type System</span>
+        <span class="service-tag">Guidelines Document</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <h3 class="service-name">Search Engine Optimization</h3>
+      <p class="service-desc">Get found by the right people at the right time. Strategic SEO that drives qualified traffic and improves organic rankings — sustainably.</p>
+      <div class="service-tags">
+        <span class="service-tag">Technical SEO</span>
+        <span class="service-tag">Keyword Research</span>
+        <span class="service-tag">Monthly Reporting</span>
+      </div>
+    </div>
+  </div>
+  <div class="services-grid-bottom">
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <h3 class="service-name">Social Media Strategy</h3>
+      <p class="service-desc">Content strategy, creative direction, and management that builds your community and keeps your brand voice consistent across every platform.</p>
+      <div class="service-tags">
+        <span class="service-tag">Content Strategy</span>
+        <span class="service-tag">Graphic Design</span>
+        <span class="service-tag">Platform Management</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <h3 class="service-name">Google Business Profile</h3>
+      <p class="service-desc">Optimize your Google presence to improve local visibility, build reviews, and convert customers searching for exactly what you offer right now.</p>
+      <div class="service-tags">
+        <span class="service-tag">Setup & Verification</span>
+        <span class="service-tag">Review Strategy</span>
+        <span class="service-tag">Local SEO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div>
+    <p class="section-label">About Us</p>
+    <h2 class="about-title">Built on strategy.<br><em>Driven by story.</em></h2>
+    <p class="about-body">Rare Gem Media is a creative design and media agency based in Little Rock, AR — bringing senior-level marketing expertise and a genuine love of craft to every project. No templates. No shortcuts. Just thoughtful work that actually moves the needle.</p>
+    <a href="about.html" class="link-arrow">Learn More</a>
+  </div>
+  <div class="about-right">
+    <div class="value-card">
+      <div class="value-name">Strategy First</div>
+      <div class="value-desc">Every creative decision is grounded in your goals, your audience, and what you need to grow.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-name">Custom Always</div>
+      <div class="value-desc">No templates, no shortcuts. Every project is built from scratch to fit exactly who you are.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-name">Story-Driven</div>
+      <div class="value-desc">Your brand has something worth saying. We help you say it beautifully — and consistently.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-name">Community-Rooted</div>
+      <div class="value-desc">We invest in Little Rock through our pro bono program, putting real design work behind local businesses.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-left">
+    <p class="cta-label">Let's Work Together</p>
+    <h2 class="cta-title">Ready to build something worth remembering?</h2>
+  </div>
+  <div class="cta-right">
+    <p class="cta-body">Whether you need a website, a full brand identity, or strategic digital support — we'd love to hear about what you're building. No pressure, no obligation.</p>
+    <div class="cta-actions">
+      <button class="btn-pearl">Start a Conversation</button>
+      <button class="btn-ghost-dark">View Pricing</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">
+    <svg class="footer-gem" viewBox="0 0 40 40" fill="none">
+      <polygon points="20,2 36,14 36,26 20,38 4,26 4,14" fill="none" stroke="rgba(253,252,250,0.25)" stroke-width="0.8"/>
+      <polygon points="4,14 36,14 20,16" fill="rgba(253,252,250,0.1)"/>
+    </svg>
+    <span class="footer-name">Rare Gem Media</span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="footer-right">
+    <a href="#" class="footer-probono">Little Rock: You're Open · Our Pro Bono Program</a>
+    <span class="footer-copy">© 2025 Rare Gem Media · Little Rock, AR</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
+
+  <script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-open');
+      });
+      // Close menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-open');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
